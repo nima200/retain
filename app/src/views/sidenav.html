@@ -1,19 +1,20 @@
 <div ng-controller="folderStructureController as folderCtrl">
     <ul id="slide-out" class="side-nav">
-        <li>
+        <li ng-if="folderCtrl.selectedUser()">
             <div class="user-view" layout="row" style="margin-bottom: 0">
-                <a><img class="circle" ng-src="{{folderCtrl.avatar}}"></a>
+                <a><img class="circle" ng-src="{{folderCtrl.selectedUser().avatar}}"></a>
                 <div layout="column">
-                    <a><span class="black-text name">{{folderCtrl.displayName}}</span></a>
-                    <a><span class="black-text email">{{folderCtrl.email}}</span></a>
+                    <a><span class="black-text name">{{folderCtrl.selectedUser().displayName}}</span></a>
+                    <a><span class="black-text email">{{folderCtrl.selectedUser().email}}</span></a>
                 </div>
             </div>
         </li>
-        <li>
+        <li ng-show="folderCtrl.selectedUser()">
             <div class="divider"></div>
         </li>
-        <li class="no-padding"><tree src="folderCtrl.folders"></tree></li>
-        <li><a class="collapsible-header">Change Mailbox</a></li>
+        <li class="no-padding"><tree src="folderCtrl.selectedUser().folders"></tree></li>
+        <li><a class="collapsible-header" ng-click="folderCtrl.selectUser(1112)">John</a></li>
+        <li><a class="collapsible-header" ng-click="folderCtrl.selectUser(1111)">Nima</a></li>
     </ul>
 
 </div>

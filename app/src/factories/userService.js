@@ -1,6 +1,8 @@
 retainUIApp.factory('userservice', function () {
     "use strict";
-    var user = {
+
+    var users = [{
+        id: 1111,
         firstName: 'Nima',
         lastName: 'Adibpour',
         email: 'nima_ap@outlook.com',
@@ -47,40 +49,46 @@ retainUIApp.factory('userservice', function () {
                 ]
             }]
         }
-    };
+    },{
+        id: 1112,
+        firstName: 'John',
+        lastName: 'Smith',
+        email: 'john_smith@outlook.com',
+        displayName: 'John smith',
+        avatar: 'assets/avatars/avatar_john.png',
+        folders: {
+            name: 'Mailbox',
+            value: 'mailbox',
+            children: [{
+                name: 'Facebook',
+                value: 'fb_rootFolder',
+                icon: 'mdi mdi-facebook mdi-24px',
+                children: [
+                    {
+                        name: 'Wall Posts',
+                        value: 'fb_wallPostFolder',
+                        icon: 'mdi mdi-format-quote-close mdi-24px'
+                    },
+                    {
+                        name: 'Photos',
+                        value: 'fb_photosFolder',
+                        icon: 'material-icons',
+                        mdIcon: 'insert_photo'
+                    }
+                ]
+            }]
+        }
+    }];
+    var selectedUser = users[0];
     return {
-        getFirstName: function () {
-            return user.firstName;
+        selectUser: function(id) {
+            var result = users.filter(function(user) {
+                return user.id === id;
+            });
+            selectedUser = result[0];
         },
-        setFirstName: function (firstName) {
-            user.firstName = firstName;
-        },
-        getLastName: function () {
-            return user.lastName;
-        },
-        setLastName: function (lastName) {
-            user.lastName = lastName;
-        },
-        getEmail: function () {
-            return user.email;
-        },
-        setEmail: function (email) {
-            user.email = email;
-        },
-        getDisplayName: function () {
-            return user.displayName;
-        },
-        setDisplayName: function (displayName) {
-            user.displayName = displayName;
-        },
-        getFolders: function () {
-            return user.folders;
-        },
-        setFolders: function (folders) {
-            user.folders = folders;
-        },
-        getAvatar: function() {
-            return user.avatar;
+        getSelectedUser: function() {
+            return selectedUser;
         }
     }
 });

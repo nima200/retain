@@ -1,0 +1,43 @@
+<div ng-controller="folderStructureController as folderCtrl">
+    <ul id="slide-out" class="side-nav">
+        <li>
+            <div class="user-view" layout="row" style="margin-bottom: 0">
+                <a><img class="circle" ng-src="{{folderCtrl.avatar}}"></a>
+                <div layout="column">
+                    <a><span class="black-text name">{{folderCtrl.displayName}}</span></a>
+                    <a><span class="black-text email">{{folderCtrl.email}}</span></a>
+                </div>
+            </div>
+        </li>
+        <li>
+            <div class="divider"></div>
+        </li>
+        <li class="no-padding"><tree src="folderCtrl.folders"></tree></li>
+        <li><a class="collapsible-header">Change Mailbox</a></li>
+    </ul>
+
+</div>
+<script>
+    $(".snToggle").sideNav({
+        closeOnClick: true
+    });
+</script>
+<!--
+<md-sidenav
+        class="md-sidenav-left"
+        md-component-id="left"
+        md-is-locked-open="$mdMedia('gt-sm')"
+        md-whiteframe="10">
+    <div ng-controller="folderStructureController as folderCtrl" layout="column" flex>
+        <div class="mailboxDisplayName">
+            <p>{{folderCtrl.displayName}}</p>
+        </div>
+        <div class="mailboxEmail">
+            {{folderCtrl.email}}
+        </div>
+        <tree src="folderCtrl.folders"></tree>
+        <span flex>{{folderCtrl.selectedFolder}}</span>
+        <md-button>Change mailbox</md-button>
+
+    </div>
+</md-sidenav>-->

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="retainUIApp">
+<head>
+    <!-- METADATA -->
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>Retain</title>
+    <!-- LINKS : CSS & Fonts -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:400,500,700,400italic">
+    <link rel="stylesheet" href="assets/app.css">
+    <link rel="stylesheet" href="node_modules/angular-material/angular-material.min.css">
+    <link rel="stylesheet" href="node_modules/angular-ivh-treeview/dist/ivh-treeview.css">
+    <link rel="stylesheet" href="node_modules/angular-ivh-treeview/dist/ivh-treeview-theme-basic.css">
+    <link rel="stylesheet" href="node_modules/materialize-css/dist/css/materialize.min.css">
+    <link rel="stylesheet" href="//cdn.materialdesignicons.com/1.9.32/css/materialdesignicons.min.css">
+    <!-- JS Scripts -->
+    <script src="node_modules/jquery/dist/jquery.js"></script>
+    <script src="node_modules/angular/angular.js"></script>
+    <script src="node_modules/angular-route/angular-route.js"></script>
+    <script src="node_modules/angular-resource/angular-resource.js"></script>
+    <script src="node_modules/angular-aria/angular-aria.js"></script>
+    <script src="node_modules/angular-animate/angular-animate.js"></script>
+    <script src="node_modules/angular-material/angular-material.js"></script>
+    <script src="node_modules/materialize-css/dist/js/materialize.js"></script>
+    <script src="src/boot.js"></script>
+    <script src="src/controllers/mainController.js"></script>
+    <script src="node_modules/angular-ivh-treeview/dist/ivh-treeview.js"></script>
+    <script src="src/factories/userService.js"></script>
+    <script src="src/controllers/folderStructureController.js"></script>
+    <script src="src/directives/treeDiective.js"></script>
+    <script src="src/factories/archiveService.js"></script>
+    <script src="src/factories/broadcastService.js"></script>
+    <script src="src/controllers/archiveController.js"></script>
+    <script src="src/factories/moderationService.js"></script>
+    <script src="src/controllers/toolbarController.js"></script>
+    <script src="src/factories/searchService.js"></script>
+    <script src="src/controllers/searchbarController.js"></script>
+</head>
+<body ng-cloak layout="column" ng-controller="MainController as ctrl">
+
+<div ng-include="'src/views/toolbar-main.html'"></div>
+
+<div layout="row" flex>
+    <div ng-include="'src/views/sidenav.html'" ></div>
+    <div layout="column" flex>
+        <div class="fade" ng-include="'src/views/searchbar.html'"></div>
+        <div ng-include="'src/views/messages.html'"></div>
+    </div>
+</div>
+</body>
+</html>

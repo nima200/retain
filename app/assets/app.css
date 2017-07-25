@@ -1,0 +1,114 @@
+html, body {
+    font-family: 'Roboto', sans-serif;
+    font-size: 14px;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    overflow: auto;
+}
+.material-icons.md-light { color: rgba(255, 255, 255, 1); }
+
+.side-nav a {
+    padding: 0 16px;
+}
+.browse-searchbar {
+    padding-right: 20px;
+    padding-left: 20px;
+    padding-top: 15px;
+}
+
+nav {
+    background-color: #215bc1 !important;
+}
+
+md-sidenav,
+md-sidenav.md-locked-open,
+md-sidenav.md-closed.md-locked-open-add-active {
+    min-height: 100% !important;
+    min-width: 200px !important;
+    width: 250px !important;
+    max-width: 350px !important;
+}
+.md-errors-spacer {
+    display: none;
+}
+
+#main-content {
+    padding-left: 50px;
+    padding-right: 50px;
+    padding-top: 50px;
+}
+
+.fade.ng-enter {
+    transition: 0.5s linear all;
+    opacity: 0;
+}
+
+.fade.ng-enter.ng-enter-active {
+    opacity: 1;
+}
+
+.fade.ng-leave {
+    transition: 0.5s linear all;
+    opacity: 1;
+}
+
+.fade.ng-leave.ng-leave-active {
+    opacity: 0;
+}
+
+#search-bar {
+    margin: 30px 20px 20px;
+}
+
+#search-bar * {
+    color: #c1c1c1 !important;
+}
+
+#search-bar input {
+    border-bottom-color: #c1c1c1;
+}
+
+[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+    display: none !important;
+}
+
+.mailboxDisplayName {
+    margin: 5px auto 0;
+    font-weight: 700;
+    font-size: 1.2em;
+}
+
+.mailboxEmail {
+    margin: auto auto 0;
+}
+
+.folder-buttons {
+    text-align: left !important;
+    min-width: 1% !important;
+}
+
+ul {
+    list-style-type: none;
+    /*padding-left: 20px;
+    padding-right: 20px;*/
+}
+
+.collapsed ul {
+    display: none;
+}
+
+.md-title {
+    font-size: 1em !important;
+}
+
+.collapsible {
+    /*margin: 8px !important;*/
+    padding-right: 0 !important;
+}
+
+/* for the search label to appear properly in place*/
+md-input-container label:not(.md-container-ignore) {
+    font-size: 20px !important;
+    bottom: 80% !important;
+}

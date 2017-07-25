@@ -1,0 +1,30 @@
+{
+  "name": "retain",
+  "version": "1.0.0",
+  "description": "attempt at retain userinterface using angular js",
+  "main": "index.js",
+  "dependencies": {
+    "@types/angular": "^1.6.27",
+    "@types/angular-material": "^1.1.52",
+    "@types/angular-resource": "^1.5.12",
+    "@types/jquery": "^3.2.9",
+    "angular": "^1.6.5",
+    "angular-animate": "^1.6.5",
+    "angular-aria": "^1.6.5",
+    "angular-ivh-treeview": "^2.0.0-alpha.4",
+    "angular-material": "^1.1.4",
+    "angular-messages": "^1.6.5",
+    "angular-resource": "^1.6.5",
+    "angular-route": "^1.6.5",
+    "jquery": "^3.2.1",
+    "materialize-css": "^0.100.1",
+    "tslint": "^5.5.0",
+    "typescript": "^2.4.2"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Nima Adibpour",
+  "license": "ISC"
+}

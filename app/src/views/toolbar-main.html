@@ -1,0 +1,39 @@
+<div class="navbar-fixed" ng-controller="toolbarController as tlbrCtrl">
+    <nav>
+        <div class="nav-wrapper" style="font-size: 24px; padding-left: 20px; padding-right: 20px;" layout="row">
+            <ul class="left">
+                <li class="toolbarActions">
+                    <md-button class="md-icon-button snToggle" data-activates="slide-out">
+                        <md-icon class="material-icons md-light" ng-bind="'menu'"></md-icon>
+                    </md-button>
+                </li>
+            </ul>
+            <div>{{ctrl.title}}</div>
+            <span flex></span>
+            <ul id="nav-mobile" class="right">
+                <li class="toolbarActions" ng-repeat="item in tlbrCtrl.menuItems">
+                    <md-button ng-click="item.action()" class="md-icon-button">
+                        <md-icon class="material-icons md-light">{{item.icon}}</md-icon>
+                    </md-button>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</div>
+<!--
+<md-toolbar md-whiteframe="10" md-tall>
+    <div class="md-toolbar-tools">
+        <md-button class="md-icon-button" ng-if="ctrl.smallScreen()"
+                   ng-click="ctrl.openSideNav()">
+            <md-icon>menu</md-icon>
+        </md-button>
+        <div>{{title}}</div>
+        <span flex></span>
+        <md-button class="md-icon-button" ng-click="toggleSearchBar()">
+            <md-icon>search</md-icon>
+        </md-button>
+        <md-button class="md-icon-button">
+            <md-icon>menu</md-icon>
+        </md-button>
+    </div>
+</md-toolbar>-->

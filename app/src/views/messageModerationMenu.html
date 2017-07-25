@@ -1,0 +1,20 @@
+<md-menu>
+    <md-button
+            class="md-icon-button"
+            aria-label="Moderate"
+            ng-click="archCtrl.openMenu($mdMenu, $event)">
+        <md-icon md-menu-origin>more_vert</md-icon>
+    </md-button>
+    <md-menu-content>
+        <div ng-repeat="modOption in archCtrl.moderationOptions">
+            <md-menu-item>
+                <md-button ng-click="archCtrl.openDialog(modOption, message)">
+                    <md-icon>
+                        {{modOption.icon}}
+                    </md-icon>
+                    {{modOption.name}}
+                </md-button>
+            </md-menu-item>
+        </div>
+    </md-menu-content>
+</md-menu>

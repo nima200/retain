@@ -1,0 +1,50 @@
+<div ng-controller="archiveController as archCtrl">
+    <ul class="collapsible popout z-depth-0" data-collapsible="accordion">
+        <li ng-repeat="message in archCtrl.messages | filter: archCtrl.searchQuery()">
+            <div class="collapsible-header" ng-if="archCtrl.showMessage(message)">
+                <div layout="column">
+                    <div style="margin-top: auto; margin-bottom: auto;">{{message.subject}}</div>
+                    <div>
+                        {{archCtrl.subBody(message.body)}}
+                    </div>
+                </div>
+                <span flex></span>
+                <div layout="column">
+                    <div style="text-align: center">
+                        {{message.box === 'inbox' ? message.sender : message.receiver}}
+                        <i class="mdi mdi-inbox-arrow-down mdi-dark mdi-24px"
+                           ng-if="message.box === 'inbox'"
+                           flex></i>
+                        <i class="mdi mdi-inbox-arrow-up mdi-dark mdi-24px"
+                           ng-if="message.box === 'sent'"
+                           flex></i>
+                    </div>
+                    <div layout="row">
+                        <span flex></span>
+                        <div ng-include="'/src/views/messageModerationMenu.html'"></div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="collapsible-body" ng-if="archCtrl.showMessage(message)">
+                <div layout="row">
+                    <img ng-repeat="attachment in message.attachments" ng-src="{{attachment.path}}" class="materialboxed"
+                         width="300" height="168.75" style="padding: 5px;"/>
+                </div>
+                <md-tabs md-dynamic-height md-border-bottom>
+                    <md-tab label="Message">
+                        <md-content>
+                            {{message.body}}
+                        </md-content>
+                    </md-tab>
+                    <md-tab label="Details">123</md-tab>
+                </md-tabs>
+            </div>
+        </li>
+    </ul>
+</div>
+<script>$('.collapsible').collapsible();
+$(document).ready(function () {
+    $('.materialboxed').materialbox();
+});
+</script>

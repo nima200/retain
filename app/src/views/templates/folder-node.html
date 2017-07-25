@@ -1,0 +1,11 @@
+<li>
+    <div class="md-button folder-buttons snClose" layout="row">
+        <div ng-if="!node.children">
+            <md-icon style="margin: 10px;">folder_open</md-icon>
+        </div>
+        <div ng-if="node.children">
+            <i class="mdi mdi-facebook-box mdi-24px mdi-dark"></i>
+        </div>
+        <div flex>{{node.name}}</div>
+    </div>
+</li>

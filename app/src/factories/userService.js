@@ -7,6 +7,7 @@ retainUIApp.factory('userservice', function () {
         lastName: 'Adibpour',
         email: 'nima_ap@outlook.com',
         displayName: 'Nima Adibpour',
+        emailSystem: 'Social Messaging',
         avatar: 'assets/avatars/avatar_nima.jpg',
         folders: {
             name: 'Mailbox',
@@ -55,6 +56,7 @@ retainUIApp.factory('userservice', function () {
         lastName: 'Smith',
         email: 'john_smith@outlook.com',
         displayName: 'John smith',
+        emailSystem: 'Social Messaging',
         avatar: 'assets/avatars/avatar_john.png',
         folders: {
             name: 'Mailbox',
@@ -87,8 +89,16 @@ retainUIApp.factory('userservice', function () {
             });
             selectedUser = result[0];
         },
+        getUserInfo: function (id) {
+            return users.filter(function (user) {
+                return user.id === id;
+            });
+        },
         getSelectedUser: function() {
             return selectedUser;
+        },
+        getAllUsers: function() {
+            return users;
         }
     }
 });

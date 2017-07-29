@@ -9,6 +9,8 @@ retainUIApp.controller('MainController',
         };
         self.openSideNav = function () {
             $mdSidenav('left').open();
-        }
+        };
+
+
     }
 );

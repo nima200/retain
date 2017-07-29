@@ -15,4 +15,9 @@ retainUIApp.controller('toolbarController', function (searchService) {
     self.toolbarAction = function(action) {
         action();
     };
+
+    // MATERIALIZE CSS JQUERY CALLS
+    $(document).ready(function () {
+        $('.tooltipped').tooltip({delay: 50});
+    });
 });

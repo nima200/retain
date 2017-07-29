@@ -3,26 +3,31 @@
         <li ng-repeat="message in archCtrl.messages | filter: archCtrl.searchQuery()">
             <div class="collapsible-header" ng-if="archCtrl.showMessage(message)">
                 <div layout="column">
-                    <div style="margin-top: auto; margin-bottom: auto;">{{message.subject}}</div>
+                    <div class="messageTitle" style="margin-top: 0; margin-bottom: 0;">{{message.subject}}</div>
                     <div>
                         {{archCtrl.subBody(message.body)}}
                     </div>
                 </div>
                 <span flex></span>
                 <div layout="column">
-                    <div style="text-align: center">
-                        <i class="mdi mdi-inbox-arrow-down mdi-dark mdi-24px"
-                           ng-if="message.box === 'inbox'"
-                           flex></i>
-                        <i class="mdi mdi-inbox-arrow-up mdi-dark mdi-24px" ng-if="message.box === 'sent'" flex></i>
+                    <div layout="row" ng-if="message.box === 'inbox'">
+                        <p style="margin-right: 5px; font-weight: 700;">from</p>
+                        <p style="margin:auto; font-style: italic;"> {{archCtrl.getUserInfo(message.from)[0].email}}</p>
                     </div>
-                    <div ng-include="'/src/views/messageModerationMenu.html'"></div>
+                    <div layout="row" ng-if="message.box === 'sent'">
+                        <p style="margin-right: 5px; font-weight: 700;">to</p>
+                        <p style="margin:auto; font-style: italic;"> {{archCtrl.getUserInfo(message.to)[0].email}}</p>
+                    </div>
+                    <div layout="row">
+                        <span flex></span>
+                        <div ng-include="'/src/views/messageModerationMenu.html'"></div>
+                    </div>
                 </div>
-
             </div>
             <div class="collapsible-body" ng-if="archCtrl.showMessage(message)">
                 <div layout="row">
-                    <img ng-repeat="attachment in message.attachments" ng-src="{{attachment.path}}" class="materialboxed" width="300" height="168.75" style="padding: 5px;"/>
+                    <img ng-repeat="attachment in message.attachments" ng-src="{{attachment.path}}"
+                         class="materialboxed" width="300" height="168.75" style="padding: 5px; cursor: pointer;"/>
                 </div>
                 <md-tabs md-dynamic-height md-border-bottom>
                     <md-tab label="Message">
@@ -30,14 +35,61 @@
                             {{message.body}}
                         </md-content>
                     </md-tab>
-                    <md-tab label="Details">123</md-tab>
+                    <md-tab label="Details">
+                        <table>
+                            <thead>
+                            <tr>
+                                <th>Property</th>
+                                <th>Value</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td>Sender</td>
+                                <td>{{archCtrl.getUserInfo(message.from)[0].firstName}}</td>
+                                <td>{{archCtrl.getUserInfo(message.from)[0].lastName}}</td>
+                                <td>{{archCtrl.getUserInfo(message.from)[0].email}}</td>
+                                <td><md-button style="margin: 0;">View user details</md-button></td>
+                            </tr>
+                            <tr>
+                                <td>Receiver</td>
+                                <td>{{archCtrl.getUserInfo(message.to)[0].firstName}}</td>
+                                <td>{{archCtrl.getUserInfo(message.to)[0].lastName}}</td>
+                                <td>{{archCtrl.getUserInfo(message.to)[0].email}}</td>
+                                <td><md-button style="margin: 0;" ng-click="archCtrl.constructFolderPath(message.folder)">View user details</md-button></td>
+                            </tr>
+                            <tr>
+                                <td>Mailbox ID</td>
+                                <td>{{message.mailbox}}</td>
+                            </tr>
+                            <tr>
+                                <td>Subject</td>
+                                <td>{{message.subject}}</td>
+                            </tr>
+                            <tr>
+                                <td>Message ID</td>
+                                <td>{{message.id}}</td>
+                            </tr>
+                            <tr>
+                                <td>Storage Path</td>
+                                <td>{{archCtrl.constructFolderPath(message.folder)}}</td>
+                            </tr>
+                            <tr>
+                                <td>Box type</td>
+                                <td>{{message.box.charAt(0).toUpperCase() + message.box.slice(1)}}</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </md-tab>
                 </md-tabs>
             </div>
         </li>
     </ul>
 </div>
-<script>$('.collapsible').collapsible();
-$(document).ready(function(){
-    $('.materialboxed').materialbox();
-});
+<script>
+    $('.collapsible').collapsible();
+    $(document).ready(function () {
+        $('.materialboxed').materialbox();
+    });
+
 </script>

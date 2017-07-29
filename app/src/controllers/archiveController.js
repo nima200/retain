@@ -1,4 +1,4 @@
-retainUIApp.controller('archiveController', function ($scope, archiveservice, moderationservice, $mdDialog, $mdToast, $mdSidenav, searchService) {
+retainUIApp.controller('archiveController', function ($scope, archiveservice, moderationservice, $mdDialog, $mdToast, $mdSidenav, searchService, userservice) {
     "use strict";
     var self = this;
     var menuClickEvent;
@@ -13,10 +13,12 @@ retainUIApp.controller('archiveController', function ($scope, archiveservice, mo
     self.messages = archiveservice.getMessages();
     self.moderationOptions = moderationservice.getModerationOptions();
     self.showMessage = function (message) {
-        if (self.selectedFolder === null || self.selectedFolder.value === 'mailbox') {
-            return true;
-        } else {
-            return message.folder.indexOf(self.selectedFolder.value) !== -1;
+        if (message.mailbox === userservice.getSelectedUser().id) {
+            if (self.selectedFolder === null || self.selectedFolder.value === 'mailbox') {
+                return true;
+            } else {
+                return message.folder.indexOf(self.selectedFolder.value) !== -1;
+            }
         }
     };
     self.openMessage = function (message) {
@@ -30,7 +32,7 @@ retainUIApp.controller('archiveController', function ($scope, archiveservice, mo
         $mdMenu.open(ev);
     };
     self.subBody = function (body) {
-        return body.substr(0, 45) + "...";
+        return body.substr(0, 80) + "...";
     };
     self.addModOption = function (name, value, icon) {
         moderationservice.addModerationOption(name, value, icon);
@@ -55,7 +57,6 @@ retainUIApp.controller('archiveController', function ($scope, archiveservice, mo
                 $mdDialog.show(confirm).then(
                     function () {
                         archiveservice.delete($scope.messageToDelete);
-                        console.log(self.messages);
                         self.deleteToast().success();
                     }, function () {
                         self.deleteToast().fail();
@@ -106,6 +107,9 @@ retainUIApp.controller('archiveController', function ($scope, archiveservice, mo
         archiveservice.add(message, index);
     };
     self.searchQuery = searchService.query;
+    self.getUserInfo = function (id) {
+        return userservice.getUserInfo(id);
+    };
     function sanitizePosition() {
         var current = self.toastPosition;
         if (current.bottom && last.top) current.top = false;
@@ -114,10 +118,22 @@ retainUIApp.controller('archiveController', function ($scope, archiveservice, mo
         if (current.left && last.right) current.right = false;
         last = angular.extend({}, current);
     }
+    self.constructFolderPath = function (folders) {
+        var path = "";
+        for (var i = 0; i <folders.length; i++) {
+            path = folders[i] + '\\' + path;
+        }
+        return "\\" + path;
+    };
 
     $scope.$on('selectedFolder', function (event, folder) {
         self.selectedFolder = folder;
         /*$scope.$apply();*/
+    });
+
+    // MATERIALIZE CSS JQUERY CALLS
+    $(document).ready(function () {
+        $('.tooltipped').tooltip({delay: 50});
     });
 });
 

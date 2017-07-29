@@ -179,7 +179,7 @@ retainUIApp.factory('archiveservice', function (broadcastservice) {
         {
             from: 1112,
             to: 1111,
-            mailbox: 1112,
+            mailbox: 1113,
             subject: 'wallpost subject 5',
             id: 13,
             sender: 'nima_ap@outlook.com',
@@ -191,7 +191,7 @@ retainUIApp.factory('archiveservice', function (broadcastservice) {
         {
             from: 1111,
             to: 1112,
-            mailbox: 1112,
+            mailbox: 1113,
             subject: 'wallpost subject 6',
             id: 14,
             sender: 'nima_ap@outlook.com',
@@ -203,15 +203,6 @@ retainUIApp.factory('archiveservice', function (broadcastservice) {
 
     ];
     return {
-        getTitle: function() {
-            return archive.title;
-        },
-        setTitle: function(newTitle) {
-            archive.title = newTitle;
-        },
-        getSelectedFolder: function() {
-            return archive.selectedFolder;
-        },
         setSelectedFolder: function(folder) {
             archive.selectedFolder = folder;
             broadcastservice.send('selectedFolder', folder);

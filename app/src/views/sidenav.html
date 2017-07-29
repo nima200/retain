@@ -13,8 +13,7 @@
             <div class="divider"></div>
         </li>
         <li class="no-padding"><tree src="folderCtrl.selectedUser().folders"></tree></li>
-        <li><a class="collapsible-header" ng-click="folderCtrl.selectUser(1112)">John</a></li>
-        <li><a class="collapsible-header" ng-click="folderCtrl.selectUser(1111)">Nima</a></li>
+        <li><a style="padding-left: 16px;" ng-click="folderCtrl.changeMailbox($event)">Change Mailbox</a></li>
     </ul>
 
 </div>
@@ -23,22 +22,3 @@
         closeOnClick: true
     });
 </script>
-<!--
-<md-sidenav
-        class="md-sidenav-left"
-        md-component-id="left"
-        md-is-locked-open="$mdMedia('gt-sm')"
-        md-whiteframe="10">
-    <div ng-controller="folderStructureController as folderCtrl" layout="column" flex>
-        <div class="mailboxDisplayName">
-            <p>{{folderCtrl.displayName}}</p>
-        </div>
-        <div class="mailboxEmail">
-            {{folderCtrl.email}}
-        </div>
-        <tree src="folderCtrl.folders"></tree>
-        <span flex>{{folderCtrl.selectedFolder}}</span>
-        <md-button>Change mailbox</md-button>
-
-    </div>
-</md-sidenav>-->

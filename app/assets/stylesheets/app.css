@@ -18,7 +18,7 @@ html, body {
 }
 
 nav {
-    background-color: #215bc1 !important;
+    background-color: rgb(33,150,243) !important;
 }
 
 md-sidenav,
@@ -37,6 +37,10 @@ md-sidenav.md-closed.md-locked-open-add-active {
     padding-left: 50px;
     padding-right: 50px;
     padding-top: 50px;
+}
+
+md-content.md-default-theme, md-content {
+
 }
 
 .fade.ng-enter {

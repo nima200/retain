@@ -10,12 +10,14 @@
     <!-- LINKS : CSS & Fonts -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:400,500,700,400italic">
-    <link rel="stylesheet" href="assets/app.css">
+    <link rel="stylesheet" href="assets/stylesheets/app.css">
     <link rel="stylesheet" href="node_modules/angular-material/angular-material.min.css">
     <link rel="stylesheet" href="node_modules/angular-ivh-treeview/dist/ivh-treeview.css">
     <link rel="stylesheet" href="node_modules/angular-ivh-treeview/dist/ivh-treeview-theme-basic.css">
     <link rel="stylesheet" href="node_modules/materialize-css/dist/css/materialize.min.css">
     <link rel="stylesheet" href="//cdn.materialdesignicons.com/1.9.32/css/materialdesignicons.min.css">
+    <link rel="stylesheet" href="assets/stylesheets/messages.css">
+    <link rel="stylesheet" href="assets/stylesheets/changeMailbox.css">
     <!-- JS Scripts -->
     <script src="node_modules/jquery/dist/jquery.js"></script>
     <script src="node_modules/angular/angular.js"></script>
@@ -45,7 +47,7 @@
 
 <div ng-include="'src/views/toolbar-main.html'"></div>
 
-<div layout="row" flex>
+<div layout="row" flex id="content-4" class="pmd-scrollbar mCustomScrollbar">
     <div ng-include="'src/views/sidenav.html'" ></div>
     <div layout="column" flex>
         <div class="fade" ng-include="'src/views/searchbar.html'"></div>
@@ -54,3 +56,4 @@
 </div>
 </body>
 </html>
+

@@ -1,9 +1,12 @@
 <md-menu>
     <md-button
-            class="md-icon-button"
+            class="md-icon-button tooltipped"
             aria-label="Moderate"
+            data-tooltip="More options" data-delay="50" data-position="left"
             ng-click="archCtrl.openMenu($mdMenu, $event)">
-        <md-icon md-menu-origin>more_vert</md-icon>
+        <md-icon md-menu-origin>
+            more_vert
+        </md-icon>
     </md-button>
     <md-menu-content>
         <div ng-repeat="modOption in archCtrl.moderationOptions">

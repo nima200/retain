@@ -46,15 +46,13 @@
                             <tbody>
                             <tr>
                                 <td>Sender</td>
-                                <td>{{archCtrl.getUserInfo(message.from)[0].firstName}}</td>
-                                <td>{{archCtrl.getUserInfo(message.from)[0].lastName}}</td>
+                                <td>{{archCtrl.getUserInfo(message.from)[0].displayName}}</td>
                                 <td>{{archCtrl.getUserInfo(message.from)[0].email}}</td>
                                 <td><md-button style="margin: 0;">View user details</md-button></td>
                             </tr>
                             <tr>
                                 <td>Receiver</td>
-                                <td>{{archCtrl.getUserInfo(message.to)[0].firstName}}</td>
-                                <td>{{archCtrl.getUserInfo(message.to)[0].lastName}}</td>
+                                <td>{{archCtrl.getUserInfo(message.to)[0].displayName}}</td>
                                 <td>{{archCtrl.getUserInfo(message.to)[0].email}}</td>
                                 <td><md-button style="margin: 0;" ng-click="archCtrl.constructFolderPath(message.folder)">View user details</md-button></td>
                             </tr>

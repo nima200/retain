@@ -1,6 +1,7 @@
 retainUIApp.factory('userservice', function () {
     "use strict";
-
+    var search = {};
+    search._query = '';
     var users = [{
         id: 1111,
         firstName: 'Nima',
@@ -55,8 +56,128 @@ retainUIApp.factory('userservice', function () {
         firstName: 'John',
         lastName: 'Smith',
         email: 'john_smith@outlook.com',
-        displayName: 'John smith',
+        displayName: 'John Smith',
         emailSystem: 'Social Messaging',
+        avatar: 'assets/avatars/avatar_john.png',
+        folders: {
+            name: 'Mailbox',
+            value: 'mailbox',
+            children: [{
+                name: 'Facebook',
+                value: 'fb_rootFolder',
+                icon: 'mdi mdi-facebook mdi-24px',
+                children: [
+                    {
+                        name: 'Wall Posts',
+                        value: 'fb_wallPostFolder',
+                        icon: 'mdi mdi-format-quote-close mdi-24px'
+                    },
+                    {
+                        name: 'Photos',
+                        value: 'fb_photosFolder',
+                        icon: 'material-icons',
+                        mdIcon: 'insert_photo'
+                    }
+                ]
+            }]
+        }
+    },{
+        id: 1113,
+        firstName: 'John',
+        lastName: 'Doe',
+        email: 'john_doe@outlook.com',
+        displayName: 'John doe',
+        emailSystem: 'Exchange',
+        avatar: 'assets/avatars/avatar_john.png',
+        folders: {
+            name: 'Mailbox',
+            value: 'mailbox',
+            children: [{
+                name: 'Facebook',
+                value: 'fb_rootFolder',
+                icon: 'mdi mdi-facebook mdi-24px',
+                children: [
+                    {
+                        name: 'Wall Posts',
+                        value: 'fb_wallPostFolder',
+                        icon: 'mdi mdi-format-quote-close mdi-24px'
+                    },
+                    {
+                        name: 'Photos',
+                        value: 'fb_photosFolder',
+                        icon: 'material-icons',
+                        mdIcon: 'insert_photo'
+                    }
+                ]
+            }]
+        }
+    },{
+        id: 1114,
+        firstName: 'Mary',
+        lastName: 'Miller',
+        email: 'marry_miller@outlook.com',
+        displayName: 'Marry Miller',
+        emailSystem: 'Exchange',
+        avatar: 'assets/avatars/avatar_john.png',
+        folders: {
+            name: 'Mailbox',
+            value: 'mailbox',
+            children: [{
+                name: 'Facebook',
+                value: 'fb_rootFolder',
+                icon: 'mdi mdi-facebook mdi-24px',
+                children: [
+                    {
+                        name: 'Wall Posts',
+                        value: 'fb_wallPostFolder',
+                        icon: 'mdi mdi-format-quote-close mdi-24px'
+                    },
+                    {
+                        name: 'Photos',
+                        value: 'fb_photosFolder',
+                        icon: 'material-icons',
+                        mdIcon: 'insert_photo'
+                    }
+                ]
+            }]
+        }
+    },{
+        id: 1115,
+        firstName: 'David',
+        lastName: 'Gilmour',
+        email: 'david_gilmour@outlook.com',
+        displayName: 'David Gilmour',
+        emailSystem: 'GroupWise',
+        avatar: 'assets/avatars/avatar_john.png',
+        folders: {
+            name: 'Mailbox',
+            value: 'mailbox',
+            children: [{
+                name: 'Facebook',
+                value: 'fb_rootFolder',
+                icon: 'mdi mdi-facebook mdi-24px',
+                children: [
+                    {
+                        name: 'Wall Posts',
+                        value: 'fb_wallPostFolder',
+                        icon: 'mdi mdi-format-quote-close mdi-24px'
+                    },
+                    {
+                        name: 'Photos',
+                        value: 'fb_photosFolder',
+                        icon: 'material-icons',
+                        mdIcon: 'insert_photo'
+                    }
+                ]
+            }]
+        }
+    },{
+        id: 1116,
+        firstName: 'Roger',
+        lastName: 'Waters',
+        email: 'roger_waters@outlook.com',
+        displayName: 'Roger Waters',
+        emailSystem: 'Exchange',
         avatar: 'assets/avatars/avatar_john.png',
         folders: {
             name: 'Mailbox',
@@ -99,6 +220,9 @@ retainUIApp.factory('userservice', function () {
         },
         getAllUsers: function() {
             return users;
+        },
+        query: function(newQuery) {
+            return arguments.length ? (search._query = newQuery) : search._query;
         }
     }
 });

@@ -6,17 +6,32 @@
     </md-toolbar>
     <div layout="row" style="margin-top: 20px;">
         <md-icon style="margin-left: 20px; margin-right: 10px;">search</md-icon>
-        <md-input-container style="margin: 0 20px 0 10px;" flex>
-            <label>Search</label>
-            <input style="margin-bottom:0;" title="Mailbox Search"/>
+        <md-input-container flex="20">
+            <label>Filter</label>
+            <md-select ng-model="searchFilter" multiple style="margin-bottom: 0;">
+                <md-option ng-value="option.value" ng-repeat="option in mailboxCtrl.filters">
+                    {{option.name}}
+                </md-option>
+            </md-select>
         </md-input-container>
+        <md-input-container style="margin: 0 10px 0 10px;" flex>
+            <label>Search</label>
+            <input ng-model="query.displayName" ng-model-options="{ getterSetter: true }" style="margin-bottom:0;"
+                   title="Mailbox Search"/>
+        </md-input-container>
+        <md-button class="md-icon-button" style="margin: auto 10px auto 10px;" ng-click="mailboxCtrl.resetSearchQuery()">
+            <i class="mdi mdi-close mdi-24px mdi-dark"></i>
+        </md-button>
     </div>
     <md-dialog-content>
         <md-tabs md-dynamic-height>
             <md-tab label="social">
                 <md-content>
                     <md-list flex>
-                        <md-list-item ng-repeat="user in mailboxCtrl.users()" class="md-3-line" ng-click="mailboxCtrl.selectUser(user.id)">
+                        <md-list-item
+                                ng-repeat="user in mailboxCtrl.users() | filter: {$: query, emailSystem: 'Social Messaging'}"
+                                class="md-3-line"
+                                ng-click="mailboxCtrl.selectUser(user.id)">
                             <img ng-src="{{user.avatar}}" class="md-avatar" alt="{{user.displayName}}"/>
                             <div class="md-list-item-text" layout="column">
                                 <h3>{{user.displayName}}</h3>
@@ -31,7 +46,28 @@
             <md-tab label="exchange">
                 <md-content>
                     <md-list flex>
-                        <md-list-item ng-repeat="user in mailboxCtrl.users()" class="md-3-line" ng-click="mailboxCtrl.selectUser(user.id)">
+                        <md-list-item
+                                ng-repeat="user in mailboxCtrl.users() | filter: {$: query, emailSystem: 'Exchange'}"
+                                class="md-3-line"
+                                ng-click="mailboxCtrl.selectUser(user.id)">
+                            <img ng-src="{{user.avatar}}" class="md-avatar" alt="{{user.displayName}}"/>
+                            <div class="md-list-item-text" layout="column">
+                                <h3>{{user.displayName}}</h3>
+                                <h4>{{user.emailSystem}}</h4>
+                                <p>{{user.email}}</p>
+                            </div>
+                            <md-button class="md-secondary">more info</md-button>
+                        </md-list-item>
+                    </md-list>
+                </md-content>
+            </md-tab>
+            <md-tab label="groupwise">
+                <md-content>
+                    <md-list flex>
+                        <md-list-item
+                                ng-repeat="user in mailboxCtrl.users() | filter: {$: query, emailSystem: 'GroupWise'}"
+                                class="md-3-line"
+                                ng-click="mailboxCtrl.selectUser(user.id)">
                             <img ng-src="{{user.avatar}}" class="md-avatar" alt="{{user.displayName}}"/>
                             <div class="md-list-item-text" layout="column">
                                 <h3>{{user.displayName}}</h3>

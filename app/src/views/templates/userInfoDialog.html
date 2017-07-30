@@ -1,0 +1,38 @@
+<md-dialog aria-label="User information dialog for {{user.displayName}}">
+    <md-toolbar>
+        <div class="md-toolbar-tools">
+            <h2>User information for {{user.displayName}}</h2>
+            <span flex></span>
+            <md-button class="md-icon-button" ng-click="hideDialog()">
+                <md-icon class="material-icons md-light">close</md-icon>
+            </md-button>
+        </div>
+    </md-toolbar>
+    <md-dialog-content style="padding: 20px;">
+        <div flex style="text-align: center"><img class="circle" width="64" height="64" ng-src="{{user.avatar}}"/></div>
+        <table >
+            <tbody>
+            <tr>
+                <td>User ID</td>
+                <td>{{user.id}}</td>
+            </tr>
+            <tr>
+                <td>First Name</td>
+                <td>{{user.firstName}}</td>
+            </tr>
+            <tr>
+                <td>Last Name</td>
+                <td>{{user.lastName}}</td>
+            </tr>
+            <tr>
+                <td>Email Address</td>
+                <td>{{user.email}}</td>
+            </tr>
+            <tr>
+                <td>Email System</td>
+                <td>{{user.emailSystem}}</td>
+            </tr>
+            </tbody>
+        </table>
+    </md-dialog-content>
+</md-dialog>

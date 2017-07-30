@@ -18,4 +18,7 @@ retainUIApp.controller('searchController', function($scope, searchService) {
             value: 'email'
         }
     ];
+    self.resetSearchQuery = function () {
+        searchService.query('');
+    }
 });

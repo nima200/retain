@@ -116,3 +116,7 @@ md-input-container label:not(.md-container-ignore) {
     font-size: 20px !important;
     bottom: 80% !important;
 }
+
+.dropdown-content li>a{
+    color: #3a3a3a !important;
+}

@@ -1,0 +1,34 @@
+<a class="dropdown-button tooltipped"
+   data-activates="maintoolbarMenu"
+   data-position="left"
+   data-delay="50"
+   data-tooltip="{{item.operation}}">
+    <md-icon class="material-icons md-light">
+        more_vert
+    </md-icon>
+</a>
+<ul id="maintoolbarMenu" class="dropdown-content">
+    <li ng-repeat="option in item.children">
+        <a ng-click="option.action()">
+            <div layout="row">
+                <md-icon class="material-icons md-dark" style="margin-left:0;margin-right: 10px;">
+                    {{option.icon}}
+                </md-icon>
+                <div>{{option.operation}}</div>
+            </div>
+        </a>
+    </li>
+</ul>
+
+<script>
+    $(document).ready(function () {
+        $('.dropdown-button').dropdown(
+            {
+                alignment: 'left',
+                hover: false,
+                belowOrigin: true,
+                constrainWidth: false
+            }
+        );
+    })
+</script>

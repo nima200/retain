@@ -38,10 +38,10 @@ retainUIApp.controller('archiveController', function ($scope, archiveservice, mo
     $scope.messageToDelete = null;
     $scope.messageToDeleteIndex = null;
     self.openDialog = function (modOption, message) {
-        $scope.messageToDelete = message;
-        $scope.messageToDeleteIndex = self.messages.indexOf(message);
         switch (modOption.value) {
             case 'delete':
+                $scope.messageToDelete = message;
+                $scope.messageToDeleteIndex = self.messages.indexOf(message);
                 var confirm = $mdDialog.confirm()
                     .title('Are you sure you want to delete this message from Retain?')
                     .textContent('The following message will be deleted from your archive. This action is irreversible and will be recorded.')
@@ -73,6 +73,17 @@ retainUIApp.controller('archiveController', function ($scope, archiveservice, mo
         }
         return "\\" + path;
     };
+    self.showUserInfo = function (user, ev) {
+        $mdDialog.show({
+            locals: {user: user},
+            controller: userDialogController,
+            templateUrl: '/src/views/templates/userInfoDialog.html',
+            targetEvent: ev,
+            clickOutsideToClose: true,
+            fullscreen: true,
+            parent: angular.element(document.body)
+        });
+    };
 
     $scope.$on('selectedFolder', function (event, folder) {
         self.selectedFolder = folder;
@@ -83,6 +94,13 @@ retainUIApp.controller('archiveController', function ($scope, archiveservice, mo
     $(document).ready(function () {
         $('.tooltipped').tooltip({delay: 50});
     });
+
+    function userDialogController($scope, $mdDialog, user) {
+        $scope.user = user;
+        $scope.hideDialog = function() {
+            $mdDialog.hide();
+        }
+    }
 });
 
 

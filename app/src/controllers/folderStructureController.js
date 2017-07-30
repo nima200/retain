@@ -46,4 +46,7 @@ retainUIApp.controller('folderStructureController', function ($scope, userservic
             fullscreen: true
         })
     };
+    self.closeDialog = function () {
+        $mdDialog.hide();
+    }
 });

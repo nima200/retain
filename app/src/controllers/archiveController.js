@@ -1,4 +1,4 @@
-retainUIApp.controller('archiveController', function ($scope, archiveservice, moderationservice, $mdDialog, $mdSidenav, searchService, userservice) {
+retainUIApp.controller('archiveController', function ($scope, archiveservice, moderationservice, $mdDialog, $mdSidenav, searchService, userservice, $mdMedia) {
     "use strict";
     var self = this;
     var menuClickEvent;
@@ -22,11 +22,19 @@ retainUIApp.controller('archiveController', function ($scope, archiveservice, mo
         self.observedMessage = null;
     };
     self.openMenu = function ($mdMenu, ev) {
+        $('.tooltipped').tooltip('hide');
         menuClickEvent = ev;
         $mdMenu.open(ev);
     };
     self.subBody = function (body) {
-        return body.substr(0, 80) + "...";
+        if ($mdMedia('xs')) {
+            return null;
+        } else {
+            return body.substr(0, 80) + "...";
+        }
+    };
+    self.onPc = function () {
+        return !!$mdMedia('gt-xs');
     };
     self.addModOption = function (name, value, icon) {
         moderationservice.addModerationOption(name, value, icon);

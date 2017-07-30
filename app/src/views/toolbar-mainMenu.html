@@ -2,7 +2,8 @@
    data-activates="maintoolbarMenu"
    data-position="left"
    data-delay="50"
-   data-tooltip="{{item.operation}}">
+   data-tooltip="{{item.operation}}"
+   ng-click="item.action()">
     <md-icon class="material-icons md-light">
         more_vert
     </md-icon>
@@ -11,8 +12,8 @@
     <li ng-repeat="option in item.children">
         <a ng-click="option.action()">
             <div layout="row">
-                <md-icon class="material-icons md-dark" style="margin-left:0;margin-right: 10px;">
-                    {{option.icon}}
+                <md-icon md-svg-src="{{option.icon}}" style="margin-left:0;margin-right: 10px;"
+                         aria-label="{{option.operation}}">
                 </md-icon>
                 <div>{{option.operation}}</div>
             </div>

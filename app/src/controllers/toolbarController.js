@@ -2,9 +2,10 @@ retainUIApp.controller('toolbarController', function (searchService) {
     "use strict";
     var self = this;
     self.toolbarActions = [{
-        operation : 'Search',
+        operation: 'Search',
         icon: 'search',
-        action: function() {
+        action: function () {
+            $('.tooltipped').tooltip('hide');
             searchService.toggle();
         },
         templateUrl: '/src/views/toolbar-mainSearch.html'
@@ -12,41 +13,56 @@ retainUIApp.controller('toolbarController', function (searchService) {
         operation: 'Menu',
         icon: 'more_vert',
         templateUrl: '/src/views/toolbar-mainMenu.html',
+        action: function () {
+            $('.tooltipped').tooltip('hide');
+        },
         children: [
             {
                 operation: 'Language',
-                icon: 'language',
+                icon: 'assets/icons/translate.svg',
                 action: function () {
 
                 }
             }, {
                 operation: 'Admin Panel',
-                icon: 'apps',
+                icon: 'assets/icons/account-settings.svg',
                 action: function () {
 
                 }
             }, {
                 operation: 'Settings',
-                icon: 'settings',
+                icon: 'assets/icons/settings.svg',
+                action: function () {
+
+                }
+            }, {
+                operation: 'Exported Items',
+                icon: 'assets/icons/export.svg',
+                action: function () {
+
+                }
+            }, {
+                operation: 'Tag Definitions',
+                icon: 'assets/icons/tag-multiple.svg',
                 action: function () {
 
                 }
             }, {
                 operation: 'Help',
-                icon: 'help',
+                icon: 'assets/icons/help-circle.svg',
                 action: function () {
-                    
+
                 }
             }, {
                 operation: 'About',
-                icon: 'domain',
-                action: function() {
+                icon: 'assets/icons/domain.svg',
+                action: function () {
 
                 }
             }
         ]
     }];
-    self.toolbarAction = function(action) {
+    self.toolbarAction = function (action) {
         action();
     };
 

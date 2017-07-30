@@ -11,12 +11,12 @@
                 <span flex></span>
                 <div layout="column">
                     <div layout="row">
-                        <div layout="row" ng-if="message.box === 'inbox'">
+                        <div layout="row" ng-if="message.box === 'inbox' && archCtrl.onPc()">
                             <p style="margin-right: 5px; font-weight: 700;">from</p>
                             <p style="margin:auto; font-style: italic;">
                                 {{archCtrl.getUserInfo(message.from)[0].email}}</p>
                         </div>
-                        <div layout="row" ng-if="message.box === 'sent'">
+                        <div layout="row" ng-if="message.box === 'sent' && archCtrl.onPc()" >
                             <p style="margin-right: 5px; font-weight: 700;">to</p>
                             <p style="margin:auto; font-style: italic;">
                                 {{archCtrl.getUserInfo(message.to)[0].email}}</p>
@@ -100,5 +100,4 @@
     $(document).ready(function () {
         $('.materialboxed').materialbox();
     });
-
 </script>

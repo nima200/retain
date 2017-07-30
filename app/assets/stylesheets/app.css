@@ -61,15 +61,15 @@ md-content.md-default-theme, md-content {
     opacity: 0;
 }
 
-#search-bar {
+.search-bar {
     margin: 30px 20px 20px;
 }
 
-#search-bar * {
+.search-bar * {
     color: #c1c1c1 !important;
 }
 
-#search-bar input {
+.search-bar input {
     border-bottom-color: #c1c1c1;
 }
 

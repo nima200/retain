@@ -1,8 +1,18 @@
 <div ng-controller="searchController as searchCtrl">
-<md-card ng-if="searchCtrl.visible()" class="fade">
-    <md-input-container id="search-bar" flex>
-        <label>Search</label>
-        <input title="Search" ng-model="searchCtrl.query" ng-model-options="{ getterSetter: true }"/>
-    </md-input-container>
-</md-card>
+    <md-card ng-if="searchCtrl.visible()">
+        <div layout="row">
+            <md-input-container>
+                <label>Filter</label>
+                <md-select ng-model="searchFilter" multiple>
+                    <md-option ng-value="option.value" ng-repeat="option in searchCtrl.filters">
+                        {{option.name}}
+                    </md-option>
+                </md-select>
+            </md-input-container>
+            <md-input-container class="search-bar" flex>
+                <label>Search</label>
+                <input title="Search" ng-model="searchCtrl.query" ng-model-options="{ getterSetter: true }"/>
+            </md-input-container>
+        </div>
+    </md-card>
 </div>

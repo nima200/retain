@@ -1,4 +1,4 @@
-retainUIApp.controller('toolbarController', function (searchService) {
+retainUIApp.controller('toolbarController', function ($scope, searchService, $mdDialog, userservice) {
     "use strict";
     var self = this;
     self.toolbarActions = [{
@@ -20,9 +20,17 @@ retainUIApp.controller('toolbarController', function (searchService) {
             {
                 operation: 'Language',
                 icon: 'assets/icons/translate.svg',
-                action: function () {
-
-                }
+                action: function (ev) {
+                $mdDialog.show({
+                    locals: {languages: ['English', 'French', 'German', 'Chinese']},
+                    controller: dialogControllers().languageDialogController,
+                    templateUrl: '/src/views/templates/languageDialog.html',
+                    targetEvent: ev,
+                    clickOutsideToClose: true,
+                    fullscreen: false,
+                    parent: angular.element(document.body)
+                });
+            }
             }, {
                 operation: 'Admin Panel',
                 icon: 'assets/icons/account-settings.svg',
@@ -32,8 +40,15 @@ retainUIApp.controller('toolbarController', function (searchService) {
             }, {
                 operation: 'Settings',
                 icon: 'assets/icons/settings.svg',
-                action: function () {
-
+                action: function (ev) {
+                    $mdDialog.show({
+                        controller: dialogControllers().settingDialogController,
+                        templateUrl: '/src/views/templates/settingDialog.html',
+                        targetEvent: ev,
+                        clickOutsideToClose: true,
+                        fullscreen: true,
+                        parent: angular.element(document.body)
+                    })
                 }
             }, {
                 operation: 'Exported Items',
@@ -71,4 +86,21 @@ retainUIApp.controller('toolbarController', function (searchService) {
         $('.tooltipped').tooltip({delay: 50});
         $('.dropdown-button').dropdown();
     });
+    function dialogControllers() {
+        var hideDialog = function() {
+            $mdDialog.hide();
+        };
+        return {
+            languageDialogController: function ($scope, languages) {
+                $scope.languages = languages;
+                $scope.currentLanguage = $scope.languages[0];
+                $scope.hideDialog = hideDialog;
+            },
+            settingDialogController: function ($scope) {
+                $scope.userGroups = ['Default', 'HR', 'Upper Management', 'Management', 'Sales', 'Engineering'];
+                $scope.hideDialog = hideDialog;
+                $scope.users = userservice.getAllUsers;
+            }
+        }
+    }
 });

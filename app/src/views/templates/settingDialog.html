@@ -1,0 +1,159 @@
+<md-dialog ng-cloak >
+    <md-toolbar>
+        <div class="md-toolbar-tools" layout="row">
+            <h2>Settings</h2>
+            <span flex></span>
+            <md-button class="md-icon-button" ng-click="hideDialog()">
+                <md-icon class="material-icons md-light">close</md-icon>
+            </md-button>
+        </div>
+    </md-toolbar>
+    <md-dialog-content>
+
+        <md-tabs md-dynamic-height>
+            <md-tab label="Core Settings">
+                <md-content style="padding: 20px;">
+                    <table class="responsive-table">
+                        <tbody>
+                        <tr>
+                            <td>User ID</td>
+                            <td>Administrator</td>
+                        </tr>
+                        <tr>
+                            <td>Comment</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>Authentication Method</td>
+                            <td>Offline Authentication (forced) (Use exclusively)</td>
+                        </tr>
+                        <tr>
+                            <td>Primary UID</td>
+                            <td>fe72a537-2d97-408d-9bd2-ce5a142e42d3</td>
+                        </tr>
+                        <tr>
+                            <td>Group Membership</td>
+                            <td>Default</td>
+                        </tr>
+                        <tr>
+                            <td>Change internal password</td>
+                            <td>
+                                <div flex layout="column">
+                                    <md-input-container style="min-width: 100%; margin-bottom:0; margin-top:0;">
+                                        <label style="font-size: 14px !important;">Old Password</label>
+                                        <input style="margin-bottom:0;" title="Old Password"/>
+                                    </md-input-container>
+                                    <md-input-container style="min-width: 100%; margin-bottom:0; margin-top:0;">
+                                        <label style="font-size: 14px !important;">New Password</label>
+                                        <input style="margin-bottom:0;" title="New Password"/>
+                                    </md-input-container>
+                                    <md-input-container style="min-width: 100%; margin-bottom:0; margin-top:0;">
+                                        <label style="font-size: 14px !important;">Confirm New Password</label>
+                                        <input style="margin-bottom:0;" title="Confirm New Password"/>
+                                    </md-input-container>
+                                </div>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                    <md-dialog-actions>
+                        <md-button>Confirm</md-button>
+                        <md-button>Cancel</md-button>
+                    </md-dialog-actions>
+                </md-content>
+            </md-tab>
+            <md-tab label="User Rights">
+                <md-content style="padding: 20px;">
+                    <table>
+                        <thead>
+                        <tr>
+                            <td>
+                                Rights explicitly granted to you, and inherited from your group membership(s).
+                            </td>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td>
+                                Full rights to search all mailboxes
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Full Administrative rights
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </md-content>
+            </md-tab>
+            <md-tab label="Mailboxes">
+                <md-content style="padding: 20px;">
+                    <table>
+                        <thead>
+                        <tr>
+                            <td>
+                                These are additional mailboxes beyond your primary mailbox that you have access to
+                            </td>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td>All mailboxes on your Retain Server</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </md-content>
+            </md-tab>
+            <md-tab label="Confidential Exceptions">
+                <md-content style="padding: 20px;">
+                    <div>
+                        Select group(s) or user(s) to apply confidential state to their mailboxes.<br/>
+                        Unless you grant additional rights to other users, only you can view the items in these
+                        mailboxes
+                    </div>
+                    <table>
+                        <tbody>
+                        <tr>
+                            <td>
+                                Groups
+                            </td>
+                            <td>
+                                <md-input-container flex>
+                                    <md-select ng-model="confidentialStateUserGroups" multiple>
+                                        <label>User Groups</label>
+                                        <md-option ng-repeat="userGroup in userGroups" ng-value="userGroup">
+                                            {{userGroup}}
+                                        </md-option>
+                                    </md-select>
+                                </md-input-container>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Users
+                            </td>
+                            <td>
+                                <p style="font-style: italic;">/* Form autocomplete with user search will be inserted here */</p>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </md-content>
+            </md-tab>
+            <md-tab label="Miscellaneous">
+                <md-content style="padding: 20px;">
+                    <table>
+                        <thead>
+                        <tr>
+                            <td>
+                                <p style="font-style: italic;">Not yet implemented</p>
+                            </td>
+                        </tr>
+                        </thead>
+                    </table>
+                </md-content>
+            </md-tab>
+        </md-tabs>
+    </md-dialog-content>
+</md-dialog>

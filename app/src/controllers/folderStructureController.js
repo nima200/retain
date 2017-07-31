@@ -24,6 +24,38 @@ retainUIApp.controller('folderStructureController', function ($scope, userservic
             value: 'email'
         }
     ];
+    self.mailboxTabs = [
+        {
+            title: 'social',
+            emailSystem: 'Social Messaging'
+        }, {
+            title: 'exchange',
+            emailSystem: 'Exchange'
+        }, {
+            title: 'groupwise',
+            emailSystem: 'GroupWise'
+        }
+    ];
+    self.showUserInfo = function(user, ev) {
+        $mdDialog.show({
+            locals: {user: user},
+            controller: userDialogController,
+            templateUrl: '/src/views/templates/userInfoDialog.html',
+            targetEvent: ev,
+            clickOutsideToClose: true,
+            fullscreen: true,
+            parent: angular.element(document.body)
+        });
+    };
+    function userDialogController($scope, $mdDialog, user) {
+        $scope.user = user;
+        $scope.hideDialog = function() {
+            $mdDialog.hide();
+        }
+    }
+
+
+
     self.openFolder = function(folder) {
         archiveservice.setSelectedFolder(folder);
     };

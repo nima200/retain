@@ -10,7 +10,7 @@
 </a>
 <ul id="maintoolbarMenu" class="dropdown-content">
     <li ng-repeat="option in item.children">
-        <a ng-click="option.action()">
+        <a ng-click="option.action($event)">
             <div layout="row">
                 <md-icon md-svg-src="{{option.icon}}" style="margin-left:0;margin-right: 10px;"
                          aria-label="{{option.operation}}">

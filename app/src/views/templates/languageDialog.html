@@ -1,0 +1,22 @@
+<md-dialog aria-label="Language settings">
+    <md-toolbar>
+        <div class="md-toolbar-tools">
+            <h2>Language Settings</h2>
+            <span flex></span>
+            <md-button class="md-icon-button" ng-click="hideDialog()">
+                <md-icon class="material-icons md-light">close</md-icon>
+            </md-button>
+        </div>
+    </md-toolbar>
+    <md-dialog-content style="padding: 20px;">
+        <div layout="column">
+            <div>Current language: {{currentLanguage}}</div>
+            <div>
+                <md-select ng-model="currentLanguage">
+                    <label>Choose language</label>
+                    <md-option aria-label="{{language}}" ng-repeat="language in languages" ng-value="language">{{language}}</md-option>
+                </md-select>
+            </div>
+        </div>
+    </md-dialog-content>
+</md-dialog>

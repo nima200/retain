@@ -148,7 +148,7 @@ retainUIApp.factory('userservice', function () {
         email: 'david_gilmour@outlook.com',
         displayName: 'David Gilmour',
         emailSystem: 'GroupWise',
-        avatar: 'assets/avatars/avatar_john.png',
+        avatar: 'assets/avatars/avatar_gilmour.jpg',
         folders: {
             name: 'Mailbox',
             value: 'mailbox',
@@ -178,7 +178,7 @@ retainUIApp.factory('userservice', function () {
         email: 'roger_waters@outlook.com',
         displayName: 'Roger Waters',
         emailSystem: 'Exchange',
-        avatar: 'assets/avatars/avatar_john.png',
+        avatar: 'assets/avatars/avatar_waters.jpg',
         folders: {
             name: 'Mailbox',
             value: 'mailbox',
